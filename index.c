@@ -59,34 +59,34 @@
 //     return 0;
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(){
-    char nome[100];           // Para armazenar o nome completo do usuário
-    int idade;                // Para armazenar a idade
-    float altura, pesoIdeal;  // Para armazenar a altura e o cálculo do peso ideal
+// int main(){
+//     char nome[100];           // Para armazenar o nome completo do usuário
+//     int idade;                // Para armazenar a idade
+//     float altura, pesoIdeal;  // Para armazenar a altura e o cálculo do peso ideal
 
-    // Solicita o nome completo
-    printf("digite seu nome completo: ");
-    fgets(nome, sizeof(nome), stdin);  // Usa fgets para ler uma linha inteira, incluindo espaços
+//     // Solicita o nome completo
+//     printf("digite seu nome completo: ");
+//     fgets(nome, sizeof(nome), stdin);  // Usa fgets para ler uma linha inteira, incluindo espaços
 
-    // Solicita a idade
-    printf("digite sua idade: ");
-    scanf("%d", &idade);   // Lê um número inteiro e armazena em 'idade'
+//     // Solicita a idade
+//     printf("digite sua idade: ");
+//     scanf("%d", &idade);   // Lê um número inteiro e armazena em 'idade'
 
-    // Solicita a altura
-    printf("digite a sua altura (em metros): ");
-    scanf("%f", &altura);  // Lê um número de ponto flutuante e armazena em 'altura'
+//     // Solicita a altura
+//     printf("digite a sua altura (em metros): ");
+//     scanf("%f", &altura);  // Lê um número de ponto flutuante e armazena em 'altura'
 
-    // Cálculo do peso ideal (fórmula: Peso Ideal = 22 * (altura)^2)
-    pesoIdeal = 22 * altura * altura;
+//     // Cálculo do peso ideal (fórmula: Peso Ideal = 22 * (altura)^2)
+//     pesoIdeal = 22 * altura * altura;
 
-    // Exibe as informações formatadas
-    printf("Olá! seu nome é %s\n", nome);  // Exibe o nome (com a quebra de linha)
-    printf("Sua idade é de %d anos, e sua altura é %.2f metros e seu peso ideal é aproximadamente de %.2f kg.\n", idade, altura, pesoIdeal);  // Exibe a idade, altura e peso ideal formatados
+//     // Exibe as informações formatadas
+//     printf("Olá! seu nome é %s\n", nome);  // Exibe o nome (com a quebra de linha)
+//     printf("Sua idade é de %d anos, e sua altura é %.2f metros e seu peso ideal é aproximadamente de %.2f kg.\n", idade, altura, pesoIdeal);  // Exibe a idade, altura e peso ideal formatados
 
-    return 0;   // Finaliza o programa
-}
+//     return 0;   // Finaliza o programa
+// }
 
 // #include <stdio.h>
 
@@ -113,3 +113,58 @@ int main(){
 
 //     return 0;
 // }
+
+//código completo com a otimização:
+// #include <stdio.h>
+
+// int digitoRaiz(int n) {
+//     if (n == 0) return 0;
+//     return (n % 9 == 0) ? 9 : n % 9;
+// }
+
+// int main() {
+//     int n;
+//     while (1) {
+//         printf("Digite um número (0 para sair): ");
+//         if (scanf("%d", &n) != 1 || n < 0) {  // Valida se a entrada é um número não negativo
+//             printf("Entrada inválida. Tente novamente.\n");
+//             while(getchar() != '\n');  // Limpa o buffer de entrada
+//             continue;
+//         }
+//         if (n == 0) break;  // Interrompe o loop se o número for 0
+
+//         printf("Dígito raiz de %d é %d\n", n, digitoRaiz(n));  // Exibe o dígito raiz
+//     }
+
+//     return 0;
+// }
+
+//ler entradas de aquivo
+
+#include <stdio.h>
+
+int digitoRaiz(int n) {
+    if (n == 0) return 0;
+    return (n % 9 == 0) ? 9 : n % 9;
+}
+
+int main() {
+    int n;
+    
+    // Redireciona a entrada e saída para arquivos
+    freopen("input.txt", "r", stdin);  // Lê dados do arquivo input.txt
+    freopen("output.txt", "w", stdout);  // Escreve resultados no arquivo output.txt
+
+    while (1) {
+        scanf("%d", &n);  // Lê um número inteiro
+        if (n == 0) break;  // Interrompe o loop quando 0 for lido
+
+        printf("%d\n", digitoRaiz(n));  // Imprime o dígito raiz no arquivo
+    }
+
+    fclose(stdin);  // Fecha o arquivo de entrada
+    fclose(stdout);  // Fecha o arquivo de saída
+
+    return 0;
+}
+
